@@ -23,7 +23,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
       <div class="banner-content">
         <h1><%= ENV['MODEL'].capitalize%></h1>
         <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
         <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
@@ -37,7 +37,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
       <div class="banner-content-xs">
         <h1><%= ENV['MODEL'].capitalize%></h1>
         <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary" %>
+        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
   </div>
