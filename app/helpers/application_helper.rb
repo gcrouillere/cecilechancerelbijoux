@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def destroy_admin_user_session_path
-    return "/produits"
+    return "/#{ENV['MODEL']}"
   end
 
   def photo_update(variable, top, right, bottom, left, classe, texte)
