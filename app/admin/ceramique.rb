@@ -1,4 +1,4 @@
-ActiveAdmin.register Ceramique, as: 'Produits' do
+ActiveAdmin.register Ceramique, as: 'Bijoux' do
   permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
   menu priority: 1
 
@@ -83,20 +83,20 @@ show do |ceramique|
 
     def create
     super do |format|
-      redirect_to admin_produits_path and return if resource.valid?
+      redirect_to admin_bijoux_path and return if resource.valid?
     end
   end
 
   def destroy
     flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
     super do |format|
-      redirect_to admin_produits_path and return
+      redirect_to admin_bijoux_path and return
     end
   end
 
   def update
     super do |format|
-      redirect_to admin_produits_path and return if resource.valid?
+      redirect_to admin_bijoux_path and return if resource.valid?
     end
   end
 
