@@ -214,7 +214,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       "price": "<%= humanized_money(@ceramique.price)%>",
       "priceCurrency": "€"
     },
-    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/ceramiques/<%=@ceramique.id%>",
+    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/bijoux/<%=@ceramique.id%>",
     "image": "<%=cl_image_path @ceramique.photos[0].path%>"
   }
   </script>

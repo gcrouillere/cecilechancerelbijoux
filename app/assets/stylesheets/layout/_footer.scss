@@ -13,10 +13,10 @@
     font-size: $font-size-footer-icone;
     a {
       margin-left: 30px;
-      color: $navbar;
+      color: $primary;
     }
     i {
-      color: $navbar;
+      color: $primary;
       margin-right: 20px;
       &:hover {
       font-size: larger;
@@ -56,7 +56,7 @@
     color: $navbar;
     font-size: $font-size-footer-icone;
     i {
-    color: $navbar;
+    color: $primary;
     }
     .link {
       margin-top: 10px;
