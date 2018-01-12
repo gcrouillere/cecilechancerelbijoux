@@ -71,6 +71,8 @@ ActiveAdmin.register User, as: 'Clients' do
      def update
       super do |format|
         @user = User.find(params[:id].to_i)
+        puts "#{@user.email}"
+        puts "#{@user.tracking}"
         OrderMailer.send_tracking_after_order(@user).deliver_now
         redirect_to admin_clients_path and return if resource.valid?
       end
