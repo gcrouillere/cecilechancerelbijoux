@@ -27,8 +27,10 @@
           <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
-          <%= link_to order_path(Order.find(session[:order])) do %>
-            <span><i class="fa fa-shopping-cart"></i> Panier</span>
+          <% if Order.where(id: session[:order]).present? %>
+            <%= link_to order_path(Order.find(session[:order])) do %>
+              <span><i class="fa fa-shopping-cart"></i> Panier</span>
+            <% end %>
           <% end %>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
@@ -72,10 +74,13 @@
       <%= link_to new_lesson_path do %>
         <span><i class="fa fa-calendar-o"></i> Stage</span>
       <% end %>
+
       <% if user_signed_in? %>
         <% if session[:order].present? %>
-          <%= link_to order_path(Order.find(session[:order])) do %>
-            <span><i class="fa fa-shopping-cart"></i> Panier</span>
+          <% if Order.where(id: session[:order]).present? %>
+            <%= link_to order_path(Order.find(session[:order])) do %>
+              <span><i class="fa fa-shopping-cart"></i> Panier</span>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

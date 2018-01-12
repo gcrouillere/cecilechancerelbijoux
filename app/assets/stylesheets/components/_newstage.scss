@@ -5,6 +5,22 @@
   label {
     color: $stage-color-label
   }
+  .social-buttons {
+    position: absolute;
+    top: -9px;
+    right: 15px;
+    font-size: 20px;
+    .fa-facebook-square {
+      color: #3b5998;
+    }
+    .fa-pinterest-square {
+      color: #bd081c;
+      cursor: pointer;
+    }
+    .fa-twitter-square{
+      color: #1da1f2;
+    }
+  }
   .submit-div-stage {
     display: flex;
     align-items: center;

@@ -13,6 +13,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
     @disabled_dates = full_bookings
     @confirmed_course_js_format = confirmed_courses
+    @twitter_url = request.original_url.to_query('url')
   end
 
   def create

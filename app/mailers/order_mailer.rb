@@ -15,4 +15,9 @@ class OrderMailer < ApplicationMailer
     mail(to: "#{ENV['EMAIL']}", subject: 'Nouvelle commande recue')
   end
 
+  def send_tracking_after_order(user)
+    @user = user
+    mail(to: @user.email, subject: 'Numéro de suivi pour votre colis')
+  end
+
 end
