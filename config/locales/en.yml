@@ -22,6 +22,9 @@
 en:
   activerecord:
       models:
+        user:
+          one: "Client"
+          other: "Clients"
         ceramique:
           one: "Bijou"
           other: "Bijoux"
@@ -36,11 +39,16 @@ en:
           one: "Offre"
           other: "Offres"
       attributes:
+        user:
+          first_name: "Prénom"
+          last_name: "Nom"
+          tracking: "N° de suivi colis"
         ceramique:
           name: "Nom"
           description: "Description"
           category: "Catégorie"
           price_cents: "Prix en cents d'€"
+          weight: "Poids"
         category:
           name: "Nom"
         lesson:
@@ -68,18 +76,18 @@ en:
     view: "Voir"
     edit: "Editer"
     delete: "Supprimer"
-    delete_confirmation: "Are you sure you want to delete this?"
-    create_another: "Create another %{model}"
+    delete_confirmation: "Voulez vous vraiment supprimer ceci?"
+    create_another: "Créer un autre %{model}"
     new_model: "Créer %{model}"
     edit_model: "Editer %{model}"
     delete_model: "Supprimer %{model}"
     details: "%{model} Details"
-    cancel: "Cancel"
+    cancel: "Annuler"
     empty: "Vide"
     previous: "Précédent"
     next: "Suivant"
     download: "Download:"
-    has_many_new: "Add New %{model}"
+    has_many_new: "Ajouter un nouveau %{model}"
     has_many_delete: "Delete"
     has_many_remove: "Remove"
     filters:
@@ -123,8 +131,8 @@ en:
         other: "entries"
     any: "Any"
     blank_slate:
-      content: "There are no %{resource_name} yet."
-      link: "Create one"
+      content: "Il n' y a pas encore de %{resource_name}."
+      link: "En créer"
     dropdown_actions:
       button_label: "Actions"
     batch_actions:
@@ -137,9 +145,9 @@ en:
       selection_toggle_explanation: "(Toggle Selection)"
       action_label: "%{title} Selected"
       labels:
-        destroy: "Delete"
+        destroy: "Supprimer"
     comments:
-      created_at: "Created"
+      created_at: "Créé"
       resource_type: "Resource Type"
       author_type: "Author Type"
       body: "Body"
@@ -201,3 +209,12 @@ en:
       block: "List"
       grid: "Grid"
       blog: "Blog"
+  formtastic:
+    :yes: 'Oui'
+    :no: 'Non'
+    :create: 'Créer %{model}'
+    :update: 'Mettre à jour %{model}'
+    :submit: 'Enregistrer %{model}'
+    :cancel: 'Annuler %{model}'
+    :reset: 'Réinitialiser %{model}'
+    :required: 'requis'

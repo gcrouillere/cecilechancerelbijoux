@@ -8,7 +8,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
   <%= cl_image_path @ceramique.photos[0].path %>
 <% end %>
 <% content_for(:meta_description) do %>
-  <%= @ceramique.name + ": " + @ceramique.description %>
+  <%= ("#{@ceramique.name} : #{@ceramique.description}. Prix: #{humanized_money(@ceramique.price)} €").squish %>
 <% end %>
 
 
@@ -38,17 +38,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
-              <div class="social-buttons">
-                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?<%=@twitter_url%>">
-                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonPin" data-pin-custom="true">
-                  <i class="fa fa-pinterest-square" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php">
-                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                </a>
-              </div>
+              <%= render 'shared/socialbuttons' %>
               <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
               <hr>
             </div>
@@ -214,7 +204,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       "price": "<%= humanized_money(@ceramique.price)%>",
       "priceCurrency": "€"
     },
-    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/bijoux/<%=@ceramique.id%>",
+    "url": "<%=request.original_url%>",
     "image": "<%=cl_image_path @ceramique.photos[0].path%>"
   }
   </script>
@@ -225,4 +215,5 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
     data-pin-round="true"
     data-pin-tall="15px"
 ></script>
+  <%= render 'shared/facebookshare' %>
 <% end %>

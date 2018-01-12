@@ -1,0 +1,9 @@
+<script>
+  document.getElementById('facebookshare').onclick = function() {
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      href: '<%=request.original_url%>',
+    }, function(response){});
+  }
+</script>

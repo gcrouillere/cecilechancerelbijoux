@@ -88,8 +88,8 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre com
     "description": "Online craft store",
     "openingHours": "Mo-Fr 09:00-18:00",
     "telephone": "<%= ENV['TELEPHONE']%>",
-    "url": "https://<%= ENV['APPNAME']%>.herokuapp.com/",
-    "image":"https://<%= ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%>",
+    "url": "<%=request.original_url%>",
+    "image": "<%=request.original_url%><%= image_path ENV['HOMEPIC']%>",
     "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ')%>",
     "priceRange":"20€ à 800€"
   }

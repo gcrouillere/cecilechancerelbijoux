@@ -13,6 +13,7 @@
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_product_name %>" />
+    <meta property="fb:app_id" content="<%=ENV['FB_ID']%>"/>
 
     <!-- Twitter Card data -->
     <!-- <meta name="twitter:card" content="summary_large_image">
@@ -30,6 +31,7 @@
     <meta name="msvalidate.01" content="A2005042705811D0F9A1F93173061E82" />
   </head>
   <body>
+    <%= render 'shared/facebookSDK'%>
     <div class="body">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
@@ -44,7 +46,6 @@
       <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.5/showdown.min.js" %>
       <%= javascript_include_tag 'application' %>
       <%= cloudinary_js_config %>
-
       <%= yield(:after_js) %>
     </div>
   </body>

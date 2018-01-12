@@ -12,6 +12,22 @@
     border-radius: $project-border-radius;
     border: $card-border;
     position: relative;
+    .social-buttons {
+          position: absolute;
+          top: 68px;
+          right: 15px;
+          font-size: 20px;
+          .fa-facebook-square {
+            color: #3b5998;
+          }
+          .fa-pinterest-square {
+            color: #bd081c;
+            cursor: pointer;
+          }
+          .fa-twitter-square{
+            color: #1da1f2;
+          }
+        }
     .white-div {
       height: 13px;
     }
@@ -20,8 +36,7 @@
       font-weight: 100;
     }
     .list-h1 {
-      background: linear-gradient(to right, $primary, #ddfff9);
-      // #f0f2f0
+      background: linear-gradient(to right, $primary, lighten($primary, 72%));
       display: flex;
       align-items: center;
       justify-content: space-between;

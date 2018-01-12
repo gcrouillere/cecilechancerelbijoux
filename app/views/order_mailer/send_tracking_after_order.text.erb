@@ -1,0 +1,11 @@
+Bonjour <%= @user.first_name %> <%= @user.last_name %>,
+
+Votre commande a été remise à La Poste. Voici le numéro de suivi Colissimo : <%= @user.tracking %>
+
+Avec ce numéro, vous pouvez suivre la livraison de votre colis sur le site de La Poste.
+
+Cordialement
+
+<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
+email : <%= "#{ENV['EMAIL']}" %>
+téléphone : <%= "#{ENV['TELEPHONE']}" %>
