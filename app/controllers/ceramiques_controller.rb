@@ -16,6 +16,7 @@ class CeramiquesController < ApplicationController
       filter_by_offer if params[:offer].present?
     end
     @twitter_url = request.original_url.to_query('url')
+    @facebookid = ""
   end
 
   def show

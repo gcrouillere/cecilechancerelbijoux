@@ -1,7 +1,4 @@
 .body-stage {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100%;
   label {
     color: $stage-color-label
   }
@@ -44,6 +41,7 @@
         font-size: $font-size-h5;
       }
       p {
+        text-align: justify;
         font-weight: $font-weight-p;
           strong {
             font-weight: $font-weight-p-strong;
@@ -64,11 +62,25 @@
   background-color: $available-stage-background-color;
 }
 
-.body-stage-mobile {
-  background: #e6dada;
-  background: $mobile-stage-background-gradient;
-  .stage {
+.body-stage {
+  .stage-mobile {
     margin: 10px;
+    .social-buttons {
+      position: absolute;
+      top: -14px;
+      right: 11px;
+      font-size: 20px;
+      .fa-facebook-square {
+        color: #3b5998;
+      }
+      .fa-pinterest-square {
+        color: #bd081c;
+        cursor: pointer;
+      }
+      .fa-twitter-square{
+        color: #1da1f2;
+      }
+    }
     .submit-div-stage {
       display: flex;
       align-items: center;
@@ -94,6 +106,7 @@
         strong {
           font-weight: $font-weight-p-strong;
         }
+        text-align: justify;
       }
     }
   }

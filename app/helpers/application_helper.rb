@@ -35,4 +35,9 @@ module ApplicationHelper
     user ? (user.articles.where(name: article_name).present? ? user.articles.where(name: article_name).first : nil ) : nil
   end
 
+  def facebook_share_id(facebookid)
+    @facebookid = facebookid
+    render partial: "shared/socialbuttons"
+  end
+
 end

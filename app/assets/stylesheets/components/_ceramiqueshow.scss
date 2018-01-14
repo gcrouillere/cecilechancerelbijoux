@@ -184,6 +184,22 @@
 
 // MOBILE
   .head {
+    .social-buttons {
+      position: absolute;
+      top: -16px;
+      right: 9px;
+      font-size: 20px;
+      .fa-facebook-square {
+        color: #3b5998;
+      }
+      .fa-pinterest-square {
+        color: #bd081c;
+        cursor: pointer;
+      }
+      .fa-twitter-square{
+        color: #1da1f2;
+      }
+    }
     .image-xs-sm {
       margin-left: 10px;
       margin-right: 10px;

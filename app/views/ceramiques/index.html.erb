@@ -10,8 +10,8 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     <%= cl_image_path @front_offer.ceramiques.first.photos[0].path %>
   <% end %>
   <% content_for(:meta_description) do %>
-    <% @front_offer.discount > 0 ? discount = "Réduction de #{(@front_offer.discount * 100).to_i} %" : discount = "" %>
-    <%= "#{@front_offer.title} - #{discount} - #{@front_offer.description}".squish %>
+    <% @front_offer.discount > 0 ? discount = " - Réduction de #{(@front_offer.discount * 100).to_i} % " : discount = "" %>
+    <%= "#{@front_offer.title} #{discount} - #{@front_offer.description}".squish %>
   <% end %>
 <% end %>
 
@@ -118,15 +118,20 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                 <div class="img-container">
                   <img class="img" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
                   <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
-                  <h2 class="prix-index"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
                   <% if ceramique.offer %>
                     <% if ceramique.offer.discount > 0 %>
-                      <h3 class="previous-price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
+                      <div class="allpricesmobile-w">
+                        <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                        <h3 class="previous-price-mobile"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
+                      </div>
                     <% end %>
+                  <% else %>
+                    <div class="allpricesmobile-wo">
+                      <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                    </div>
                   <% end %>
                 </div>
-                <h2> <%= ceramique.name.capitalize%> </h2>
-                <h3> <%= ceramique.description%> </h3>
+                <h2 class="card-mobile-h2"> <%= ceramique.name.capitalize%> </h2>
               </div>
             <% end %>
           </div>
