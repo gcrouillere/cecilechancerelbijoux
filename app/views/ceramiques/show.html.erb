@@ -38,7 +38,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
-              <%= render 'shared/socialbuttons' %>
+              <%= facebook_share_id("facebookshare") %>
               <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
               <hr>
             </div>
@@ -128,6 +128,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       <div class="col-xs-12 hidden-md hidden-lg">
 
         <div class="head">
+          <%= facebook_share_id("facebooksharemobile") %>
           <h1> <%= @ceramique.name.capitalize%> </h1>
           <div class="image-xs-sm">
             <img class="img-front" src="<%= cl_image_path @ceramique.photos[0].path %>" alt="<%=@ceramique.name%>">
@@ -215,5 +216,4 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
     data-pin-round="true"
     data-pin-tall="15px"
 ></script>
-  <%= render 'shared/facebookshare' %>
 <% end %>

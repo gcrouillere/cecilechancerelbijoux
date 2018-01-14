@@ -48,29 +48,32 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-    <div class="body">
-      <div class="hidden-xs body-stage">
-        <%= render 'shared/stage_pic'%>
-        <style>
+
+    <div class="body-stage">
+      <%= render 'shared/stage_pic'%>
+      <style>
+        @media all and (min-width: 700px) {
           .body-stage {
             background-image: url(<%= @stagepicpath %>);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
           }
-        </style>
-        <%= render 'shared/navbar' %>
-        <%= render 'shared/flashes' %>
-        <div class="content">
-          <%= yield %>
-        </div>
-        <%= render 'shared/footer' %>
+        }
+        @media all and (max-width: 700px) {
+          .body-stage {
+            background: #e6dada;
+            background: linear-gradient(to right, #f0f2f0, #000c40);
+          }
+        }
+      </style>
+
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <div class="content">
+        <%= yield %>
       </div>
-      <div class="hidden-sm hidden-md hidden-lg body-stage-mobile">
-        <%= render 'shared/navbar' %>
-        <%= render 'shared/flashes' %>
-        <div class="content">
-          <%= yield %>
-        </div>
-        <%= render 'shared/footer' %>
-      </div>
+      <%= render 'shared/footer' %>
 
       <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
       <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
@@ -78,7 +81,7 @@
       <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.5/showdown.min.js" %>
       <%= javascript_include_tag 'application' %>
       <%= cloudinary_js_config %>
-
+      <%= render 'shared/facebookshare' %>
       <%= yield(:after_js) %>
     </div>
   </body>

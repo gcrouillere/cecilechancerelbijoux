@@ -1,9 +1,21 @@
 <script>
-  document.getElementById('facebookshare').onclick = function() {
-    FB.ui({
-      method: 'share',
-      display: 'popup',
-      href: '<%=request.original_url%>',
-    }, function(response){});
-  }
+  $(document).ready(function() {
+    $('#facebookshare').on('click', function(e){
+      e.preventDefault();
+      FB.ui({
+        method: 'share',
+        display: 'popup',
+        href: '<%=request.original_url%>',
+      }, function(response){});
+    });
+     $('#facebooksharemobile').on('click', function(e){
+      e.preventDefault();
+      FB.ui({
+        method: 'share',
+        display: 'popup',
+        mobile_iframe: true,
+        href: '<%=request.original_url%>',
+      }, function(response){});
+    });
+  })
 </script>
