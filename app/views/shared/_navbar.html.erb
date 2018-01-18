@@ -62,8 +62,9 @@
 <!-- Right Navigation MOBILE -->
 <div class="navbar-mobile hidden-md hidden-lg">
  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= image_tag ENV['LOGOSITE']%>
+  <%= link_to root_path, class: "navbar-brand-mobile", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+    <%= render 'shared/logo_pic' %>
+    <%= @logositepictag %>
   <% end %>
 
   <div class="navbar-item">
