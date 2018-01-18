@@ -10,8 +10,8 @@
       <% @avatarpictag = cl_image_tag @user.avatarphoto.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%>
     <% end %>
     <% @avatarpictagmobile = cl_image_tag(cl_image_path @user.avatarphoto.path, :width => 200, :height => 200, :crop => :thumb, :gravity => :face, alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}") %>
-    <% if  @user.cityphoto.present? %>
+  <% end %>
+  <% if  @user.cityphoto.present? %>
       <% @citypictag = cl_image_tag @user.cityphoto.path, alt: "#{ENV['ADDRESS'].gsub(/[+]/, ' ')}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
-    <% end %>
   <% end %>
 <% end %>
