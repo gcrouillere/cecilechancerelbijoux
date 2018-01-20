@@ -14,6 +14,7 @@ class CeramiquesController < ApplicationController
       filter_by_category if params[:categories].present?
       filter_by_price if params[:prix_max].present?
       filter_by_offer if params[:offer].present?
+      filter_globally if params[:search].present?
     end
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
@@ -50,19 +51,23 @@ class CeramiquesController < ApplicationController
   end
 
   def filter_by_category
-    @ceramiques = []
-    params[:categories].each do |categorie|
-      @ceramiques << Ceramique.all.where(category_id: Category.find_by(name: categorie).id)
-    end
-    @ceramiques = @ceramiques.flatten(2)
+    categories = params[:categories].map {|category| "%#{category}%" }
+    @ceramiques = @ceramiques.joins(:category).where('categories.name ILIKE ANY ( array[?] )', categories)
   end
 
   def filter_by_price
-    @ceramiques = @ceramiques.select {|ceramique| ceramique.price_cents <= params[:prix_max].to_i * 100 }
+    @ceramiques = Ceramique.joins(:offer).where("price_cents * (1 - discount) <= ?", params[:prix_max].to_i * 100) +
+                  Ceramique.where('offer_id IS NULL').where("price_cents <= ?", params[:prix_max].to_i * 100)
   end
 
   def filter_by_offer
-    @ceramiques = @ceramiques.select {|ceramique| ceramique.offer == @front_offer}
+    @ceramiques = @ceramiques.where(offer: @front_offer)
+  end
+
+  def filter_globally
+    raw_json = Ceramique.raw_search(params[:search])
+    ceramiques_ids = raw_json["hits"].map {|hit| hit["objectID"].to_i}
+    @ceramiques = @ceramiques.where(id: ceramiques_ids)
   end
 end
 

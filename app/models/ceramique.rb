@@ -1,5 +1,11 @@
 class Ceramique < ApplicationRecord
+  include AlgoliaSearch
   extend FriendlyId
+
+  algoliasearch do
+    attribute :name, :description, :category
+  end
+
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :category

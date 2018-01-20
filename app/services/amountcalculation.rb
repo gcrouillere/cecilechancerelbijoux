@@ -16,7 +16,7 @@ class Amountcalculation
     if total_weight > 0
       tarif_colis = HTTParty.get(
         "https://api.laposte.fr/tarifenvoi/v1?type=colis&poids=#{total_weight}",
-        headers: {"X-Okapi-Key" => "lbcSgDW3tBaixIKP/XH0bsMYiKEhPaS6E/gUw+RJmkigGw4+qUNl5uy8/Ilx4eWh" }
+        headers: {"X-Okapi-Key" => ENV['LAPOSTE_API_KEY'] }
       )
       return {total: tarif_colis[0]["price"].to_money + amount_ceramique, port: tarif_colis[0]["price"].to_money}
     else

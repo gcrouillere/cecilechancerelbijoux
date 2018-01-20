@@ -35,7 +35,7 @@ ActiveAdmin.register User, as: 'Clients' do
         if last_lost_basket.amount > 0
           humanized_money(last_lost_basket.amount) + " € " + last_lost_basket.updated_at.strftime("le %d/%m/%Y") + ". Il contenait: " + contenu_panier
         else
-          "#{last_lost_basket.updated_at.strftime("le %d/%m/%Y")}, supprimé manuellement par le client : contenu inconnu"
+          "#{last_lost_basket.updated_at.strftime("le %d/%m/%Y")}, annulé par le client. Dernier item supprimé: #{last_lost_basket.ceramique}"
         end
       else
         "/"
