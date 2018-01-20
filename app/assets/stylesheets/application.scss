@@ -19,6 +19,10 @@
 
 .body {
   background-color: $body;
+
+  &.filter-opened {
+    overflow: hidden;
+  }
 }
 
 .content {

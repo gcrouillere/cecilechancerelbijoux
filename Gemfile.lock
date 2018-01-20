@@ -88,6 +88,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    algoliasearch (1.19.1)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.20.4)
+      algoliasearch (>= 1.17.0, < 2.0.0)
+      json (>= 1.5.1)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
@@ -166,6 +172,7 @@ GEM
       domain_name (~> 0.5)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
+    httpclient (2.8.3)
     i18n (0.8.4)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -180,6 +187,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.1.0)
     jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
@@ -353,6 +361,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activeadmin-index_as_calendar!
+  algoliasearch-rails
   attachinary!
   autoprefixer-rails
   better_errors

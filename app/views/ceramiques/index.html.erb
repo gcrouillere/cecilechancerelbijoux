@@ -49,8 +49,10 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       <div id="ceramique-filters-content">
         <h2>Rechercher</h2>
         <form action="/<%=ENV['MODEL']%>" method='get'>
+          <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Que recherchez-vous ?" name="search" autocomplete="off" />
+          <a href="https://www.algolia.com" class="lienalgolia" target="blank"><%= image_tag "algolia.png", class: "algolialogo", alt: "Lien vers Algolia"%></a>
           <div class="category-filter filter">
-            <h3>Categories</h3>
+            <h3>Catégories</h3>
             <div class="filter-category">
               <ul>
                 <% @categories.each do |category| %>
@@ -58,12 +60,12 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                 <% end %>
               </ul>
               <h3>Prix max €</h3>
-              <label class="label-search"><input type="number" name="prix_max" min="0" class="prix"></label>
+              <input type="number" name="prix_max" min="0" class="prix">
             </div>
-            <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? %>
+            <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
               <label class="label-search all"><input type="checkbox" name="all[]" value="all">Tout afficher</label>
             <% end %>
-            <input type="submit" class="btn btn-primary recherche" value="OK">
+            <input type="submit" id="recherche" class="btn btn-primary recherche" value="AFFICHER">
           </div>
         </form>
       </div>
@@ -104,6 +106,38 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     </div>
 
 <!-- MOBILE -->
+
+<div class="hidden-md hidden-lg">
+  <div id="ceramique-filters-content-mobile">
+    <h2>Rechercher<i id="close-search" class="fa fa-times-circle cross-1" aria-hidden="true"></i></h2>
+    <form action="/<%=ENV['MODEL']%>" method='get'>
+      <div class="form-body">
+      <input type="search" id="aa-search-input" class="aa-input-search aa-input-mobile" placeholder="Que recherchez-vous ?" name="search" autocomplete="off" />
+        <h3>Catégories</h3>
+        <div class="filter-category">
+          <ul>
+            <% @categories.each do |category| %>
+              <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
+            <% end %>
+          </ul>
+          <h3>Prix max €</h3>
+          <input type="number" name="prix_max" min="0" class="prix">
+        </div>
+        <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
+          <label class="label-search all"><input type="checkbox" name="all[]" value="all">Tout afficher</label>
+        <% end %>
+      </div>
+      <div class="mobile-submit">
+        <input type="submit" id="recherche" class="btn btn-primary recherche" value="AFFICHER LES PRODUITS">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="mobile-filter-search" class="hidden-md hidden-lg">
+  <i class="fa fa-search" aria-hidden="true"></i>
+</div>
+
 <div class="hidden-md hidden-lg col-xs-12 col-md-12 ceramique-list">
       <% @ceramiques.each do |ceramique| %>
           <div class="col-xs-12">
@@ -124,6 +158,10 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                         <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
                         <h3 class="previous-price-mobile"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
                       </div>
+                      <% else %>
+                        <div class="allpricesmobile-w-zero">
+                          <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
+                        </div>
                     <% end %>
                   <% else %>
                     <div class="allpricesmobile-wo">
@@ -163,5 +201,30 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
   data-pin-round="true"
   data-pin-tall="15px"
 ></script>
-  <%= render 'shared/facebookshare' %>
+<%= render 'shared/facebookshare' %>
+
+<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<!-- Initialize autocomplete menu -->
+<script>
+var client = algoliasearch("SBTERHV352", "959036b3f757a9f94938c6d46a03c2d5");
+var index = client.initIndex('Ceramique');
+//initialize autocomplete on search input (ID selector must match)
+autocomplete('#aa-search-input',
+{ hint: false }, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    //value to be displayed in input control after user's suggestion selection
+    displayKey: 'name',
+    //hash of templates used when rendering dataset
+    templates: {
+        //'suggestion' templating function used to render a single suggestion
+        suggestion: function(suggestion) {
+          return '<span>' + suggestion._highlightResult.name.value + '</span>'
+          + '<span>' + suggestion._highlightResult.description.value + '</span>'
+          +'<span>' + suggestion._highlightResult.category.name.value + '</span>';
+        }
+    }
+});
+</script>
 <% end %>

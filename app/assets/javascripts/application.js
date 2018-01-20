@@ -9,4 +9,5 @@
 //= require jquery.elevatezoom
 //= require moment
 //= require bootstrap-datetimepicker
+//= require algolia/v3/algoliasearch.min
 //= require_tree .
