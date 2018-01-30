@@ -99,15 +99,19 @@
   border-radius: $project-border-radius;
   border: $card-border;
   .img-avatar-mobile {
+    text-align: center;
     img {
-      position: absolute;
+      width: $mobile-avatar-image-width;
+      height: $mobile-avatar-image-width;
+      border: 1px solid white;
+      box-shadow: 1px 1px 1px grey;
       border-radius: 50%;
-      top: 55px;
+      top: 48px;
       right: 12px;
-      height: 8%;
     }
   }
   h1 {
+    text-align: center;
     font-size: $font-size-h4;
     margin: 11px 0px 30px 0px;
   }
