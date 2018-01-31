@@ -31,5 +31,5 @@ Rails.application.routes.draw do
   get 'sitemap.xml', :to => 'sitemap#sitemap', :defaults => { :format => 'xml' }
 
   #Root
-  root to: 'pages#home'
+  root to: 'ceramiques#index'
 end
