@@ -19,6 +19,7 @@ class CeramiquesController < ApplicationController
     @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(updated_at: :desc)
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
+    render "index_#{@active_theme.name}"
   end
 
   def show
