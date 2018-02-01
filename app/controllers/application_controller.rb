@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :retrieve_admin
+  before_action :check_theme
   layout :layout_by_resource
   after_action :store_location
 
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def retrieve_admin
     @admin = User.where(admin: true).first
+  end
+
+  def check_theme
+    @active_theme = Theme.where(active: true).first || Theme.create(active: true, name: "default")
   end
 
   #DEVISE methods:

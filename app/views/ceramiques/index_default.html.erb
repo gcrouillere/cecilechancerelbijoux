@@ -18,9 +18,9 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
 
 <div class="container">
   <div class="row">
-
 <!-- INDEX H1 :  EITHER A DISCOUNT OFFER DIV, OR A SIMPLE H1 -->
   <% if @front_offer && params[:offer] == nil %>
+
     <div class="hidden-xs hidden-sm col-md-12 info-top">
       <%= render 'shared/general_info_bubble' %>
     </div>
