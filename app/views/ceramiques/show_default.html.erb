@@ -21,7 +21,7 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
       <div class="col-md-12">
         <div class="product-show text center">
 
-          <div class="col-md-6 product-show-half-top-wrapper">
+        <div class="col-md-6 product-show-half-top-wrapper">
           <div class="ceramique-images">
             <img class="img-front" id="zoom01" src="<%= cl_image_path @ceramique.photos[0].path %>" data-zoom-image="<%= cl_image_path @ceramique.photos[0].path %>" alt="<%=@ceramique.name%>">
             <div class="images">
@@ -32,55 +32,20 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
               <% end %>
             </div>
           </div>
-          </div>
+        </div>
 
-          <div class="col-md-6 product-show-half-top-wrapper">
+        <div class="col-md-6 product-show-half-top-wrapper">
           <div class="info-add-basket">
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
               <%= facebook_share_id("facebookshare") %>
               <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
-              <hr>
-            </div>
-            <div class="prix-form">
-              <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
-              <h2> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
-              <% if @ceramique.offer %>
-                <% if @ceramique.offer.discount > 0 %>
-                  <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
-                <% end %>
-              <% end %>
-              <% if  @ceramique.stock > 0 %>
-                <form action="/orders" method="post" authenticity_token="true" class="form">
-                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <div class="qte">
-                    <label for="quantity">Quantité </label>
-                    <select name="quantity">
-                      <% for i in 1..@ceramique.stock %>
-                        <option value="<%= i %>"><%= i %></option>
-                      <% end %>
-                    </select>
-                  </div>
-                  <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
-                  <button type="submit" class="pull-right btn btn-primary order">
-                    <i class="fa fa-plus""></i> Ajouter au panier
-                  </button>
-                </form>
-              <% else %>
-                  <h2 class="stock0">Stock épuisé</h2>
-              <% end %>
             </div>
           </div>
-          </div>
+        </div>
 
         </div>
       </div>
-    </div>
-
-    <div class="link_to_list_div">
-      <%= link_to ceramiques_path, class: "link_to_list" do %>
-        <span><i class="fa fa-arrow-right"></i> Liste des <%= ENV['MODEL'].capitalize%></span>
-      <% end %>
     </div>
 
     <% if @same_category_products != [] %>
@@ -100,13 +65,6 @@ Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capi
                   <img class="same-product-photo" src="<%= cl_image_path ceramique.photos[0].path %>" alt="<%=ceramique.name%>">
                   <div class="same-category-product-card-text">
                     <p class="ceramique-name"><%= ceramique.name.capitalize%></p>
-                    <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
-                    <% if discount > 0 %>
-                      <p class="prix-index"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                      <p class="previous-price"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
-                    <% else %>
-                      <p class="prix-index-wo-discount"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h2>
-                    <% end %>
                   </div>
                   <% end %>
                 </div>

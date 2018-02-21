@@ -1,0 +1,52 @@
+<!-- Right Navigation LAPTOP -->
+<div class="navbar-laptop-lighttheme hidden-xs hidden-sm opacity-on-laptop">
+  <!-- Logo -->
+  <%= link_to "https://cecile-chancerel-bijoux.com/wp/", class: "navbar-brand", title: "Retour à l'accueil de Cécile Chancerel" do %>
+Cécile Chancerel
+  <% end %>
+
+  <!-- Different navigation if login or not -->
+  <% if user_signed_in? %>
+
+    <!-- Navbar right when connected -->
+    <div class="navbar-item">
+      <div class="nav-bar-list">
+        <%= link_to ceramiques_path do %>
+          <span>Catalogue</span>
+        <% end %>
+        <a href="#" id="lighttheme-filter-search"><%= image_tag "search.svg", class: "searchimg"%></a>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="navbar-item">
+      <div class="nav-bar-list">
+        <%= link_to ceramiques_path do %>
+          <span>Catalogue</span>
+        <% end %>
+        <a href="#" id="lighttheme-filter-search"><%= image_tag "search.svg", class: "searchimg"%></a>
+        <%= link_to new_lesson_path do %>
+          <span>Réserver un stage</span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+<!-- Right Navigation MOBILE -->
+<div class="navbar-mobile-lighttheme hidden-md hidden-lg">
+ <!-- Logo -->
+  <%= link_to "https://cecile-chancerel-bijoux.com/wp/", class: "navbar-brand-mobile", title: "Retour à l'accueil de Cécile Chancerel" do %>
+C C
+  <% end %>
+
+  <div class="navbar-item">
+    <div class="list-mobile">
+      <%= link_to ceramiques_path do %>
+        <span>Catalogue</span>
+      <% end %>
+      <a href="#" id="lighttheme-filter-search-mobile"><%= image_tag "search.svg", class: "searchimg"%></a>
+    </div>
+  </div>
+
+</div>
