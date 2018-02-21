@@ -5,50 +5,48 @@
   Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
 <% end %>
 
-<%= render 'shared/home_pics' %>
+<%= render 'shared/darktheme_home_pics' %>
 
-<div class="jumbotron">
-  <style>
-  .jumbotron .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @homepicpath %>);
-  }
-  .jumbotron .banner-xs {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%), url(<%= @homepicpathmobile %>);
-  }
-  </style>
+<div class="jumbotron-darktheme">
 
 <!-- LAPTOP -->
   <div class="hidden-xs">
-    <div class="banner">
-      <div class="banner-content">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+    <div class="banner-darktheme">
+    <%= photo_update('darktheme1photo', 100, '', '', 30, '.darktheme1photo', "Mise à jour photo d'accueil 1")%>
+      <%= cl_image_tag @darktheme1photopath, class: "photo1", alt: "Céramique n° 1 de la page d'accueil"%>
+      <div class="photos2and3">
+        <div class="photo2"></div>
+        <%= photo_update('darktheme2photo', 100, '', '', 30, '.darktheme2photo', "Mise à jour photo d'accueil 2")%>
+         <style>
+          .photo2 {
+            background-image: url(<%= @darktheme2photopath %>);
+            background-size: cover;
+            background-position-y: center;
+            background-position-x: center;
+          }
+        </style>
+        <div class="photo3"><%= cl_image_tag @darktheme3photopath, alt: "Céramique n° 3 de la page d'accueil"%></div>
+        <%= photo_update('darktheme3photo', 100, 30, '', '', '.darktheme3photo', "Mise à jour photo d'accueil 3")%>
       </div>
-        <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
-        <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
-        <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
+      <%= cl_image_tag @darktheme4photopath, class: "photo4",  alt: "Céramique n° 4 de la page d'accueil"%>
+      <%= photo_update('darktheme4photo', '', '', 100, 30, '.darktheme4photo', "Mise à jour photo d'accueil 4")%>
     </div>
   </div>
 
 <!-- MOBILE -->
   <div class="hidden-sm hidden-md hidden-lg">
-    <div class="banner-xs">
-      <div class="banner-content-xs">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
-      </div>
-    </div>
+    <div class="banner-xs-darktheme">
+      <%= cl_image_tag @darktheme1photopath, alt: "Céramique n° 1 de la page d'accueil"%>
+      <div class="photo3"><%= cl_image_tag @darktheme2photopath, alt: "Céramique n° 2 de la page d'accueil"%></div>
+      <div class="photo4"><%= cl_image_tag @darktheme3photopath, alt: "Céramique n° 3 de la page d'accueil"%></div>
+      <%= cl_image_tag @darktheme4photopath, alt: "Céramique n° 4 de la page d'accueil"%>
   </div>
 
 </div>
 
-<div class="home-text hidden-xs hidden-sm">
+<div class="home-text home-text-darktheme hidden-xs hidden-sm">
   <div class="text">
     <div class="text-left col-xs-4">
-      <%= render 'shared/logo_pic' %>
-      <%= @logositepictag %>
       <% if user_signed_in? && current_user.admin %>
           <% article_typing("accueil-gauche", "vertical", "markdown1", "live-text1", "input1") %>
           <% @markdown = @markdown1 %>

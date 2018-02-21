@@ -18,25 +18,10 @@
           <% end %>
         <% end %>
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
-        <% end %>
-        <%= link_to info_path do %>
-          <span><i class="fa fa-female"></i> Bio</span>
-        <% end %>
-        <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
-        <% end %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i> Panier</span>
-              <% end %>
-            <% end %>
-          <% end %>
+          <span><i class="fa fa-bars"></i> Catalogue</span>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <span><i class="fa fa-sign-out"></i> Se déconnecter</span>
+          <span><i class="fa fa-sign-out"></i></span>
         <% end %>
       </div>
     </div>
@@ -45,21 +30,15 @@
     <div class="navbar-item">
       <div class="nav-bar-list">
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Liste des <%=ENV['MODEL']%></span>
-        <% end %>
-        <%= link_to info_path do %>
-            <span><i class="fa fa-female"></i> Bio</span>
-        <% end %>
-        <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
+          <span><i class="fa fa-bars"></i> Catalogue</span>
         <% end %>
         <%= link_to new_user_session_path, class: "navbar-item navbar-link" do %>
-          <span><i class="fa fa-sign-in"></i> Se connecter</span>
+          <span><i class="fa fa-sign-in"></i></span>
         <% end %>
       </div>
     </div>
   <% end %>
-  </div>
+</div>
 
 <!-- Right Navigation MOBILE -->
 <div class="navbar-mobile hidden-md hidden-lg">
@@ -71,23 +50,8 @@
 
   <div class="navbar-item">
     <div class="list-mobile">
-      <%= link_to info_path do %>
-        <li><span><i class="fa fa-female"></i> Bio</span></li>
-      <% end %>
-      <%= link_to new_lesson_path do %>
-        <span><i class="fa fa-calendar-o"></i> Stage</span>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><i class="fa fa-shopping-cart"></i> Panier</span>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
+      <%= link_to ceramiques_path do %>
+        <span><i class="fa fa-bars"></i> Catalogue</span>
       <% end %>
     </div>
   </div>
