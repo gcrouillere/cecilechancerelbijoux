@@ -1,5 +1,12 @@
 <!-- Right Navigation LAPTOP -->
-<div class="navbar-laptop-lighttheme hidden-xs hidden-sm opacity-on-laptop">
+<% opacity_addition = "" %>
+<% nav_bar_mobility = "nav-mobile" %>
+<% if  params[:controller] == "lessons" %>
+  <% opacity_addition = "opacity-on-laptop" %>
+  <% nav_bar_mobility = "nav-fixe" %>
+<% end %>
+<!-- Right Navigation LAPTOP -->
+<div class="navbar-laptop-lighttheme hidden-xs hidden-sm <%= opacity_addition %> nav-mobile">
   <!-- Logo -->
   <%= link_to "https://cecile-chancerel-bijoux.com/wp/", class: "navbar-brand", title: "Retour à l'accueil de Cécile Chancerel" do %>
 Cécile Chancerel
@@ -27,6 +34,15 @@ Cécile Chancerel
         <a href="#" id="lighttheme-filter-search"><%= image_tag "search.svg", class: "searchimg"%></a>
         <%= link_to new_lesson_path do %>
           <span>Réserver un stage</span>
+        <% end %>
+        <% if session[:order].present? %>
+          <% if Order.where(id: session[:order]).present? %>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

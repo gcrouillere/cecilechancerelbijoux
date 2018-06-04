@@ -70,6 +70,7 @@
     justify-content: center;
     position: relative;
     margin: 10px;
+    height: 300px;
 
     .img {
       border-radius: $project-border-radius;
@@ -213,4 +214,27 @@
 
 .ceramique-list {
   margin-bottom: 60px;
+}
+
+.no-ceramique-list {
+  margin-top: 200px;
+  .no-ceramique {
+    text-align: center;
+  }
+}
+
+.container-lighttheme {
+  .no-ceramique-list {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    .no-ceramique {
+      text-align: center;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .no-ceramique-list {
+    margin-top: 50px;
+  }
 }

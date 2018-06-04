@@ -10,7 +10,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">
     <% if user_signed_in? && current_user.admin %>
-      <% article_typing("contact", "vertical", "markdown1", "live-text5", "input5") %>
+      <% article_typing("contact", "vertical", "markdown1", "live-text1", "input1") %>
       <% @markdown = @markdown1 %>
       <div class="live-text">
         <%= render 'shared/articletyping' %>
@@ -20,9 +20,9 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
         <% article_display("contact", "vertical") %>
         <%= @markdown.html_safe %>
         <div class="social-buttons-contact">
-          <a class="twitter-share-button" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-          <a id="facebook-contact" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a class="twitter-share-button" href="#"><i class="fab fa-twitter-square"></i></a>
+          <a id="facebook-contact" href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     <% end %>
@@ -32,9 +32,9 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
       <%= @markdown.html_safe %>
     </div>
     <div class="social-buttons-contact">
-      <a class="twitter-share-button" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-      <a id="facebook-contact" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a class="twitter-share-button" href="#"><<i class="fab fa-twitter-square"></i></a>
+      <a id="facebook-contact" href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
   <div class="hidden-xs col-sm-12 contact-form">

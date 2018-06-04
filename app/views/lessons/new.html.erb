@@ -8,9 +8,6 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
   <%= render 'shared/stage_pic'%>
   <%= @stagepicpath %>
 <% end %>
-<% content_for(:meta_description) do %>
-  Module de prise de réservations. Offrez la possibilité à vos clients d'effectuer des stages ou des visites de votre atelier.
-<% end %>
 
 <%= photo_update('lessonphoto', 80, '', '', 30, '.stagepic', "Mise à jour photo pour stages")%>
 
@@ -27,7 +24,7 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
           <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
               <span class="input-group-addon">
-                <span class="fa fa-calendar-o"></span>
+                <i class="far fa-calendar-alt"></i>
               </span>
               <input type='text' class="form-control" name="lesson[start]" placeholder="Cliquez sur l'icône calendrier pour sélectionner une date"/>
             </div>
@@ -65,7 +62,7 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
           <div class="form-group">
             <div class='input-group date' id='datetimepicker2'>
               <span class="input-group-addon">
-                <span class="fa fa-calendar-o"></span>
+                <i class="far fa-calendar-alt"></i>
               </span>
               <input type='text' class="form-control" name="lesson[start]" placeholder="JJ.MM.AAAA"/>
             </div>
@@ -92,7 +89,7 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).on('ready', function() {
+    $(document).ready(function() {
 
       var confirmed_course_js_format = <%= raw @confirmed_course_js_format%>
       var jsArray = <%= @first_possible_day.to_json.html_safe %>
@@ -124,16 +121,20 @@ Module de prise de réservations. Offrez la possibilité à vos clients d'effect
         });
     });
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "TouristAttraction",
+    "@type": "Course",
     "name": "Stage de poterie",
-    "description": "Fabriquez vos poteries",
-    "url": "<%=request.original_url%>",
+    "description": "Fabriquez vous-même vos poteries au cours d'un stage",
+    "provider": {
+      "@type": "Organization",
+      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>,
+      "sameAs": "<%=request.original_url%>"
+    }
   }
-  </script>
-    <script
+</script>
+<script
   type="text/javascript"
   async defer
   src="//assets.pinterest.com/js/pinit.js"
