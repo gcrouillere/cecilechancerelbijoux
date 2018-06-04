@@ -28,6 +28,15 @@ Cécile Chancerel
         <%= link_to ceramiques_path do %>
           <span>Catalogue</span>
         <% end %>
+        <% if session[:order].present? %>
+          <% if Order.where(id: session[:order]).present? %>
+            <% if Order.where(id: session[:order]).first.state != "lost" %>
+              <%= link_to order_path(Order.find(session[:order])) do %>
+                <span><%= image_tag "whitecart.svg", class: "lightcart"%></span>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
